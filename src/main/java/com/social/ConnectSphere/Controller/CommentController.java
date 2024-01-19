@@ -32,20 +32,6 @@ public class CommentController {
         CommentDTO commentDTO1 = commentService.updateComment(commentDTO,commentId);
         return new ResponseEntity<>(commentDTO1,HttpStatus.OK);
     }
-    @GetMapping("/getComment/{commentId}")
-    public ResponseEntity<?> get(@PathVariable Integer commentId) throws ResourceNotFoundException {
-//        System.out.println("controller->comment->get");
-//        String commentDTO = commentService.getComment(commentId);
-//        System.out.println("service->comment->get");
-        Optional<Comment> comment = commentRepository.findById(commentId);
-
-        if(comment.isEmpty()){
-            throw new ResourceNotFoundException("Comment","Id",commentId.toString());
-        }
-        System.out.println("comment-> "+comment.get().getText());
-//        return comment.get().getText();
-        return new ResponseEntity<>(comment.get().getText(), HttpStatus.OK);
-    }
     @GetMapping("/getByPost/{postId}")
     public ResponseEntity<?> getAllByPost(@PathVariable Integer id) throws ResourceNotFoundException {
         Set<CommentDTO> commentDTOS = commentService.getAllByPost(id);

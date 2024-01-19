@@ -57,18 +57,6 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public String getComment(Integer id) throws ResourceNotFoundException {
-        System.out.println("service->comment->get");
-        Optional<Comment> comment = commentRepository.findById(id);
-
-        if(comment.isEmpty()){
-            throw new ResourceNotFoundException("Comment","Id",id.toString());
-        }
-        System.out.println("comment-> "+comment.get().getText());
-        return comment.get().getText();
-    }
-
-    @Override
     public String deleteComment(Integer id) throws ResourceNotFoundException {
         Comment comment = commentRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Comment","Id",id.toString()));
         commentRepository.delete(comment);

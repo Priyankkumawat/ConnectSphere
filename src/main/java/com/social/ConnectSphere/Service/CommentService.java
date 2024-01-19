@@ -10,7 +10,6 @@ import java.util.Set;
 public interface CommentService {
     CommentDTO addComment(CommentDTO commentDTO, Integer postId, Integer userId) throws ResourceNotFoundException;
     CommentDTO updateComment(CommentDTO commentDTO, Integer commentId) throws ResourceNotFoundException;
-    String getComment(Integer id) throws ResourceNotFoundException;
     String deleteComment(Integer id) throws ResourceNotFoundException;
     Set<CommentDTO > getAllByPost(Integer id) throws ResourceNotFoundException;
 }
